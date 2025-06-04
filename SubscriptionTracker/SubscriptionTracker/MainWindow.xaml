@@ -4,19 +4,73 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubscriptionTracker"
-        xmlns:userControls="clr-namespace:SubscriptionTracker.View.UserControls"
-
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="700">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <!--<userControls:DropDownMenuBox/>-->
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="0 0 0 20"/>
+                </Style>
+
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+
+                <Style TargetType="ComboBox">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+
+            </StackPanel.Resources>
+            
+            
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Content="Name"/>
+                <Separator Width="20" Background="Transparent"/>
+                <TextBox Name="NameInput" Text="{Binding SubscriptionName}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Content="Price"/>
+                <Separator Width="20" Background="Transparent"/>
+                <TextBox Name="PriceInput"
+                         PreviewTextInput="PriceInput_PreviewTextInput"
+                         Text="{Binding Price}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Content="Category"/>
+                <Separator Width="20" Background="Transparent"/>
+                <ComboBox Name="CategoryInput" IsReadOnly="True"
+                          ItemsSource="{Binding CategoryOption}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Content="Renewal Type"/>
+                <Separator Width="20" Background="Transparent"/>
+                <ComboBox Name="RenewalTypeInput" IsReadOnly="True"
+                          ItemsSource="{Binding RenewOption}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Content="Renewal Date"/>
+                <Separator Width="20" Background="Transparent"/>
+                <TextBox Name="RenewalDateInput" Text="{Binding RenewalDate}"/>
+            </StackPanel>
+
+            <Button Content="Add New Subscription" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Width="200"/>
+        </StackPanel>
 
     </Grid>    
 </Window>
