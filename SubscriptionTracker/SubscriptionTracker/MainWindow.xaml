@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubscriptionTracker"
         xmlns:userControls="clr-namespace:SubscriptionTracker.View.UserControls"
+
         
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <userControls:MenuBar/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--<userControls:DropDownMenuBox/>-->
+
     </Grid>    
 </Window>
