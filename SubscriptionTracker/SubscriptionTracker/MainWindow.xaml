@@ -36,14 +36,13 @@
             <StackPanel Orientation="Horizontal">
                 <Label Width="100" Content="Name"/>
                 <Separator Width="20" Background="Transparent"/>
-                <TextBox Name="NameInput" Text="{Binding SubscriptionName}"/>
+                <TextBox Name="NameInput" Text="{Binding Name}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Width="100" Content="Price"/>
                 <Separator Width="20" Background="Transparent"/>
                 <TextBox Name="PriceInput"
-                         PreviewTextInput="PriceInput_PreviewTextInput"
                          Text="{Binding Price}"/>
             </StackPanel>
 
@@ -51,14 +50,14 @@
                 <Label Width="100" Content="Category"/>
                 <Separator Width="20" Background="Transparent"/>
                 <ComboBox Name="CategoryInput" IsReadOnly="True"
-                          ItemsSource="{Binding CategoryOption}"/>
+                          ItemsSource="{Binding CategoryType}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Width="100" Content="Renewal Type"/>
                 <Separator Width="20" Background="Transparent"/>
                 <ComboBox Name="RenewalTypeInput" IsReadOnly="True"
-                          ItemsSource="{Binding RenewOption}"/>
+                          ItemsSource="{Binding RenewType}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -67,10 +66,20 @@
                 <TextBox Name="RenewalDateInput" Text="{Binding RenewalDate}"/>
             </StackPanel>
 
-            <Button Content="Add New Subscription" 
+            <Button Name="AddSub"
+                    Content="Add New Subscription" 
                     VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Width="200"/>
+                    Width="200"
+                    Command="{Binding AddSubCommand}"/>
+
         </StackPanel>
+
+        <DataGrid Name="SubData" Grid.Column="1" 
+                  IsReadOnly="False" CanUserDeleteRows="True"
+                  ItemsSource="{Binding SubCollection}"
+                  HorizontalAlignment="Stretch"
+                  ColumnWidth="*"/>
+
 
     </Grid>    
 </Window>

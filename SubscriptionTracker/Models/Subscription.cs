@@ -13,5 +13,7 @@ namespace Models
         public required CategoryTypeEnum Category { get; set; }
         public required RenewTypeEnum RenewalType { get; set; }
         public required DateTime RenewalDate { get; set; }
+
+        public Subscription() { }
     }
 }
