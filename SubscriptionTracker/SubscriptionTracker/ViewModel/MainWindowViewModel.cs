@@ -87,6 +87,10 @@ namespace SubscriptionTracker.ViewModel
         private void AddSub()
         {
             Subscription newSub = CreateSubFromInput();
+
+            if (newSub == null)
+                return;
+
             SubCollection.Add(newSub);
         }
 
