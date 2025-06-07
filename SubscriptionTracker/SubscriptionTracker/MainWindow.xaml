@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubscriptionTracker"
-        
+        xmlns:validations="clr-namespace:SubscriptionTracker.Validations"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="700">
 
@@ -36,14 +36,37 @@
             <StackPanel Orientation="Horizontal">
                 <Label Width="100" Content="Name"/>
                 <Separator Width="20" Background="Transparent"/>
-                <TextBox Name="NameInput" Text="{Binding Name}"/>
+                <!--<TextBox Name="NameInput" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>-->
+                <TextBox Name="NameInput">
+                    <TextBox.Text>
+                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validations:TextOnlyValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>                        
+                    </TextBox.Text>
+                </TextBox>
+                
+                
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Width="100" Content="Price"/>
                 <Separator Width="20" Background="Transparent"/>
-                <TextBox Name="PriceInput"
-                         Text="{Binding Price}"/>
+
+                <TextBox Name="PriceInput">
+                    <!--Text="{Binding Price}">-->
+
+                    <TextBox.Text>
+                        <Binding Path="Price">
+                            <Binding.ValidationRules>
+                                <validations:PriceValidation Min="0"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    
+                </TextBox>
+                
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -75,10 +98,11 @@
         </StackPanel>
 
         <DataGrid Name="SubData" Grid.Column="1" 
-                  IsReadOnly="False" CanUserDeleteRows="True"
+                  IsReadOnly="True" CanUserDeleteRows="False"
                   ItemsSource="{Binding SubCollection}"
                   HorizontalAlignment="Stretch"
-                  ColumnWidth="*"/>
+                  ColumnWidth="*"
+                  />
 
 
     </Grid>    

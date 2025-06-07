@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
 using SubscriptionTracker.MVVM;
+using SubscriptionTracker.Validations;
 
 namespace SubscriptionTracker.ViewModel
 {
@@ -28,7 +30,11 @@ namespace SubscriptionTracker.ViewModel
         public double Price
         {
             get { return price; }
-            set { price = value; }
+            set
+            {
+                string temp = String.Format("{0:0.00}", value);
+                price = double.Parse(temp);
+            }
         }
         private double price;
 
@@ -58,7 +64,10 @@ namespace SubscriptionTracker.ViewModel
         public DateTime RenewalDate 
         {
             get { return renewalDate; }
-            set { renewalDate = value; }
+            set 
+            {
+                renewalDate = value.Date;
+            }
         }
         private DateTime renewalDate = DateTime.Now.Date; //default
 
@@ -91,6 +100,12 @@ namespace SubscriptionTracker.ViewModel
                 RenewalType = this.renewType,
                 RenewalDate = this.renewalDate.Date
             };
+
+            FullSubscriptionValidation fv = new FullSubscriptionValidation();
+            var validateRes = fv.Validate(result, null);
+
+            if (!validateRes.IsValid)
+                return null;
 
             return result;
         }
