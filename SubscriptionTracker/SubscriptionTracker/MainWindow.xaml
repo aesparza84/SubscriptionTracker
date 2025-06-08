@@ -84,9 +84,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Width="100" Content="Renewal Date"/>
+                <Label Width="100" Content="Purchase Date"/>
                 <Separator Width="20" Background="Transparent"/>
-                <TextBox Name="RenewalDateInput" Text="{Binding RenewalDate}"/>
+                <TextBox Name="RenewalDateInput" Text="{Binding RenewalDate, StringFormat=d}"/>
             </StackPanel>
 
             <Button Name="AddSub"
@@ -102,7 +102,26 @@
                   ItemsSource="{Binding SubCollection}"
                   HorizontalAlignment="Stretch"
                   ColumnWidth="*"
-                  />
+                  AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Name"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="*" Header="Price"
+                    Binding="{Binding Price}"/>
+                <DataGridTextColumn Width="*" Header="Category"
+                    Binding="{Binding Category}"/>
+                <DataGridTextColumn Width="*" Header="Renewal Type"
+                    Binding="{Binding RenewalType}"/>
+                <DataGridTextColumn Width="*" Header="RenewalDate"
+                    Binding="{Binding RenewalDate, StringFormat=d}"/>
+                <DataGridTextColumn Width="*" Header="Next Bill"
+                    Binding="{Binding NextRenewalDate, StringFormat=d}"/>
+                
+            </DataGrid.Columns>
+            
+            
+        </DataGrid>
 
 
     </Grid>    

@@ -84,6 +84,10 @@ namespace SubscriptionTracker.ViewModel
             AddSubCommand = new RelayCommand(AddSub);
         }
 
+
+        /// <summary>
+        /// Adds input to collection
+        /// </summary>
         private void AddSub()
         {
             Subscription newSub = CreateSubFromInput();
@@ -94,6 +98,10 @@ namespace SubscriptionTracker.ViewModel
             SubCollection.Add(newSub);
         }
 
+        /// <summary>
+        /// Validates input from GUI and returns a Subcription object
+        /// </summary>
+        /// <returns></returns>
         private Subscription? CreateSubFromInput()
         {
             Subscription result = new Subscription()
