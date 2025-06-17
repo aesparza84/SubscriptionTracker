@@ -73,14 +73,14 @@
                 <Label Width="100" Content="Category"/>
                 <Separator Width="20" Background="Transparent"/>
                 <ComboBox Name="CategoryInput" IsReadOnly="True"
-                          ItemsSource="{Binding CategoryType}"/>
+                          SelectedItem="{Binding CategoryType}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Width="100" Content="Renewal Type"/>
                 <Separator Width="20" Background="Transparent"/>
                 <ComboBox Name="RenewalTypeInput" IsReadOnly="True"
-                          ItemsSource="{Binding RenewType}"/>
+                          SelectedItem="{Binding RenewType}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
